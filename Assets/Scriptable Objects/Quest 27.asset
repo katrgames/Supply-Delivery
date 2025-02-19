@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 27
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The general lost a bet and needs a bribe!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 3
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Shiny and convincing!
+  - item: 5
+    score: 8
+    scoreReply: A fair trade
+    dialogReply: "He\u2019ll like this!"
+  - item: 8
+    score: 5
+    scoreReply: Unusual
+    dialogReply: Maybe it has secret value?
+  - item: 12
+    score: 2
+    scoreReply: Insulting
+    dialogReply: "He\u2019ll lose another bet."
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Worthless
+    dialogReply: "This won\u2019t buy him out of trouble!"

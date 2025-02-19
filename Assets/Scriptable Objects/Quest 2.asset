@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 2
   m_EditorClassIdentifier: 
   questDescription: The archers need more arrows! Something pointy, quick!
-  solutions: []
+  solutions:
+  - item: 0
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Perfect! Fire at will!
+  - item: 13
+    score: 6
+    scoreReply: Better than nothing
+    dialogReply: We'll... throw it?
+  - item: 2
+    score: 3
+    scoreReply: Desperation move
+    dialogReply: A fruit barrage? Worth a shot!
+  - item: 5
+    score: 2
+    scoreReply: Why???
+    dialogReply: Are we supposed to drink our enemies to death?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Impractical
+    dialogReply: Are we supposed to scare them with this?

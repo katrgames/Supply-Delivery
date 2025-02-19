@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 16
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The general has lost his lucky charm! Find a replacement!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 3
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: This should bring luck!
+  - item: 7
+    score: 8
+    scoreReply: Magical substitute
+    dialogReply: Luck AND power!
+  - item: 9
+    score: 5
+    scoreReply: Questionable
+    dialogReply: "Maybe it\u2019s a lucky boot?"
+  - item: 1
+    score: 2
+    scoreReply: No magic left
+    dialogReply: This feels... unlucky.
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Unlucky
+    dialogReply: "I don\u2019t think this inspires confidence..."

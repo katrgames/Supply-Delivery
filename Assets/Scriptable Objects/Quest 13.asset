@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 13
   m_EditorClassIdentifier: 
   questDescription: The cook needs ingredients for a feast!
-  solutions: []
+  solutions:
+  - item: 4
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Perfect for the banquet!
+  - item: 2
+    score: 8
+    scoreReply: Healthy choice
+    dialogReply: This will do nicely!
+  - item: 11
+    score: 5
+    scoreReply: Dessert option
+    dialogReply: A sweet treat!
+  - item: 13
+    score: 2
+    scoreReply: Absolutely not
+    dialogReply: Metal is not an ingredient!
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Inedible
+    dialogReply: "This won\u2019t go well in a stew..."

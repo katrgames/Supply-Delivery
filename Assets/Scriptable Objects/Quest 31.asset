@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 31
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The archer ran out of arrows! Quick, something to shoot!
   solutions:
   - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Now they just need arrows!
+  - item: 7
+    score: 7
+    scoreReply: Weird alternative
+    dialogReply: Magic missiles, maybe?
+  - item: 1
+    score: 4
+    scoreReply: Could break further
+    dialogReply: Might explode instead.
+  - item: 11
+    score: 2
+    scoreReply: Absolutely not
+    dialogReply: Projectile... but delicious?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Completely Useless
+    dialogReply: "They can\u2019t shoot this at all!"

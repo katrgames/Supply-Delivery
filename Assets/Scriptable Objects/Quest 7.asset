@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 7
   m_EditorClassIdentifier: 
   questDescription: "The wizard\u2019s hands are full! Something to help him cast!"
-  solutions: []
+  solutions:
+  - item: 1
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: "It\u2019s not great, but it\u2019ll work!"
+  - item: 8
+    score: 7
+    scoreReply: Good backup
+    dialogReply: More spells never hurt!
+  - item: 7
+    score: 5
+    scoreReply: Maybe???
+    dialogReply: This has power, but no grip!
+  - item: 11
+    score: 2
+    scoreReply: No, just no
+    dialogReply: Is this... a joke?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Unhelpful
+    dialogReply: How is this supposed to help?

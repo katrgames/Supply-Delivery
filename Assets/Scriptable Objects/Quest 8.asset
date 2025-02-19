@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 8
   m_EditorClassIdentifier: 
   questDescription: Our walls are crumbling! We need a quick fix!
-  solutions: []
+  solutions:
+  - item: 12
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: "We\u2019ll mix cement in this!"
+  - item: 9
+    score: 6
+    scoreReply: Desperate attempt
+    dialogReply: Maybe it'll plug a hole?
+  - item: 7
+    score: 5
+    scoreReply: Magical reinforcement
+    dialogReply: It might hold for a while!
+  - item: 2
+    score: 2
+    scoreReply: Why???
+    dialogReply: "We\u2019re throwing apples at the wall now?"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Worthless
+    dialogReply: "This won\u2019t hold anything together!"

@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 23
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: We need to confuse the enemy! Give us something unexpected!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 6
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: A screaming chicken charge!
+  - item: 11
+    score: 8
+    scoreReply: Distraction tactic
+    dialogReply: Pie to the face? Genius!
+  - item: 13
+    score: 5
+    scoreReply: Too predictable
+    dialogReply: 'Confusion level: low.'
+  - item: 3
+    score: 2
+    scoreReply: WHY???
+    dialogReply: Are we bribing them?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Too Normal
+    dialogReply: "This won\u2019t throw them off at all!"

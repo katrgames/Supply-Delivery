@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 36
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The guards are playing dice and need something to bet!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 3
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: High-stakes gambling!
+  - item: 5
+    score: 7
+    scoreReply: Decent
+    dialogReply: A rare prize!
+  - item: 9
+    score: 4
+    scoreReply: Not great
+    dialogReply: Uhh... sentimental value?
+  - item: 12
+    score: 2
+    scoreReply: Insulting
+    dialogReply: Betting... a bucket?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Worthless
+    dialogReply: "Nobody\u2019s betting on this!"

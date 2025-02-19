@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 3
   m_EditorClassIdentifier: 
   questDescription: The wizard needs a focus for his spell! Anything magical!
-  solutions: []
+  solutions:
+  - item: 7
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: The power surges through me!
+  - item: 8
+    score: 7
+    scoreReply: Decent choice
+    dialogReply: These words hold power!
+  - item: 1
+    score: 5
+    scoreReply: Might Work...
+    dialogReply: It crackles, but barely.
+  - item: 12
+    score: 2
+    scoreReply: Horrible Choice
+    dialogReply: Yes, magic... in a bucket. Genius.
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Powerless
+    dialogReply: This has no magic in it whatsoever...

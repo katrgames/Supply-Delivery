@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 21
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The soldiers are thirsty! We need something to drink!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 5
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Fancy, but it works!
+  - item: 12
+    score: 8
+    scoreReply: Holds more
+    dialogReply: It smells weird, but okay.
+  - item: 10
+    score: 5
+    scoreReply: Not ideal
+    dialogReply: "We\u2019ll drink from this, I guess?"
+  - item: 7
+    score: 2
+    scoreReply: Completely useless
+    dialogReply: "This won\u2019t quench thirst!"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Unusable
+    dialogReply: "They can\u2019t drink from this!"

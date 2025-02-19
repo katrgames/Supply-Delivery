@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 9
   m_EditorClassIdentifier: 
   questDescription: The enemy general is laughing at us! We need to show strength!
-  solutions: []
+  solutions:
+  - item: 13
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Let them see steel!
+  - item: 0
+    score: 7
+    scoreReply: Decent Choice
+    dialogReply: "They\u2019ll respect our archers!"
+  - item: 5
+    score: 4
+    scoreReply: Maybe intimidation?
+    dialogReply: Behold... our wealth?
+  - item: 10
+    score: 2
+    scoreReply: Useless
+    dialogReply: Are we cooking for them?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Embarrassing
+    dialogReply: "This won\u2019t make them take us seriously!"

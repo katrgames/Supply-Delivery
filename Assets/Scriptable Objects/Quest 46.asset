@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 46
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The blacksmith needs inspiration for a new weapon!
   solutions:
+  - item: 13
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: An old classic!
   - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 8
+    scoreReply: A fine example
+    dialogReply: Maybe a new design idea?
+  - item: 10
+    score: 5
+    scoreReply: Strange
+    dialogReply: A battle pan? Could work!
+  - item: 6
+    score: 2
+    scoreReply: Absurd
+    dialogReply: A... chicken-shaped sword?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: No Inspiration
+    dialogReply: This gives no ideas whatsoever.

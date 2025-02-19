@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 19
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The squire wants to impress the princess! Get something fancy!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 5
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: A royal gift indeed!
+  - item: 3
+    score: 8
+    scoreReply: A good second choice
+    dialogReply: Shiny and valuable!
+  - item: 13
+    score: 5
+    scoreReply: Not elegant
+    dialogReply: She might like antiques?
+  - item: 9
+    score: 2
+    scoreReply: Failure
+    dialogReply: This will NOT impress her.
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Embarrassing
+    dialogReply: This will NOT win her heart.

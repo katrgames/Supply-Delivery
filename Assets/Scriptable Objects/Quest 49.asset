@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 49
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The lookout is falling asleep! They need help staying awake!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 4
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: A good snack to stay sharp!
+  - item: 2
+    score: 8
+    scoreReply: Healthy
+    dialogReply: Natural sugar boost!
+  - item: 11
+    score: 5
+    scoreReply: Tasty but risky
+    dialogReply: Might make them sleepier...
+  - item: 9
+    score: 2
+    scoreReply: Useless
+    dialogReply: "Sniffing leather won\u2019t help!"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Sleep Inducing
+    dialogReply: This made them even drowsier!

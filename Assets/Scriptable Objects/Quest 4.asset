@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 4
   m_EditorClassIdentifier: 
   questDescription: The shield wall is breaking! We need reinforcement!
-  solutions: []
+  solutions:
+  - item: 13
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Steel will hold the line!
+  - item: 10
+    score: 8
+    scoreReply: Hilarious but effective
+    dialogReply: Well, it's solid...
+  - item: 9
+    score: 4
+    scoreReply: ???
+    dialogReply: One boot won't stop them!
+  - item: 11
+    score: 2
+    scoreReply: Absolutely not
+    dialogReply: "We\u2019re defending with dessert now?"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Flimsy
+    dialogReply: "This won\u2019t stop a charging army!"

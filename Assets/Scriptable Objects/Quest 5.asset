@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 5
   m_EditorClassIdentifier: 
   questDescription: The alchemist needs a vessel! Something to hold liquid!
-  solutions: []
+  solutions:
+  - item: 12
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Not the cleanest, but it'll do!
+  - item: 5
+    score: 8
+    scoreReply: Fancy but effective
+    dialogReply: A royal choice!
+  - item: 10
+    score: 5
+    scoreReply: Questionable
+    dialogReply: "It\u2019s... kind of deep enough?"
+  - item: 0
+    score: 2
+    scoreReply: WHY?
+    dialogReply: Do you even know how liquids work?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Unfit
+    dialogReply: Liquids will go everywhere with this!

@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 15
   m_EditorClassIdentifier: 
   questDescription: The enemy has a magic barrier! We need to counter it!
-  solutions: []
+  solutions:
+  - item: 7
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: This will break their spell!
+  - item: 8
+    score: 8
+    scoreReply: Close enough
+    dialogReply: A counter-spell could work!
+  - item: 1
+    score: 5
+    scoreReply: Might backfire
+    dialogReply: It's... sparking?
+  - item: 12
+    score: 2
+    scoreReply: Useless
+    dialogReply: You're throwing a bucket at magic?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Powerless
+    dialogReply: "This won\u2019t break a single spell!"

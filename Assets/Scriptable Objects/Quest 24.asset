@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 24
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The dungeon is too dark! We need light!
   solutions:
+  - item: 7
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Glows perfectly!
+  - item: 8
+    score: 8
+    scoreReply: Might help
+    dialogReply: It has a fire spell, right?
+  - item: 1
+    score: 5
+    scoreReply: Sparks, barely
+    dialogReply: Not quite a torch, but okay!
   - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 2
+    scoreReply: Useless
+    dialogReply: "You can\u2019t shoot light!"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Darkness Remains
+    dialogReply: "This won\u2019t help us see!"

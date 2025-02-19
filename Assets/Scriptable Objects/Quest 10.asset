@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 10
   m_EditorClassIdentifier: 
   questDescription: The blacksmith needs a tool to shape metal!
-  solutions: []
+  solutions:
+  - item: 10
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: A fine hammer substitute!
+  - item: 13
+    score: 7
+    scoreReply: Too dull, but okay
+    dialogReply: I guess this works?
+  - item: 1
+    score: 3
+    scoreReply: WHY???
+    dialogReply: "That\u2019s... not a tool"
+  - item: 4
+    score: 2
+    scoreReply: Are you serious?
+    dialogReply: I can't forge with cheese!
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Inadequate
+    dialogReply: "This won\u2019t shape metal, that\u2019s for sure."

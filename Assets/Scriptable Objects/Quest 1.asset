@@ -15,21 +15,21 @@ MonoBehaviour:
   questDescription: The commander is starving! Bring something edible!
   solutions:
   - item: 4
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Ah, aged to perfection!
   - item: 11
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 9
+    scoreReply: Tasty
+    dialogReply: Sweet, but it'll do!
   - item: 6
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 5
+    scoreReply: "\u2026 It's alive???"
+    dialogReply: Uh... it's running away.
   - item: 7
-    score: 0
-    scoreReply: 
-    dialogReply: 
+    score: 2
+    scoreReply: THIS IS NOT FOOD
+    dialogReply: Are you trying to poison him?
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Useless
+    dialogReply: The commander needs food, not this!

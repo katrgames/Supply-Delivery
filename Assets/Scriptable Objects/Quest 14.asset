@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 14
   m_EditorClassIdentifier: 
   questDescription: The catapult team needs weight! Something heavy!
-  solutions: []
+  solutions:
+  - item: 12
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Heavy and solid!
+  - item: 5
+    score: 6
+    scoreReply: Not ideal
+    dialogReply: Expensive ammunition...
+  - item: 10
+    score: 4
+    scoreReply: Light but throwable
+    dialogReply: It might work... barely.
+  - item: 6
+    score: 2
+    scoreReply: Too alive
+    dialogReply: It flew away mid-air!
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Too light
+    dialogReply: This will barely make it past the wall!

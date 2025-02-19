@@ -12,24 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 45
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The enemy is launching fireballs! We need something to block
+    them!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 10
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: It deflects the flames!
+  - item: 12
+    score: 7
+    scoreReply: Not bad
+    dialogReply: Might hold up against heat!
+  - item: 7
+    score: 5
+    scoreReply: Unpredictable
+    dialogReply: Maybe it has a shield spell?
+  - item: 2
+    score: 2
+    scoreReply: Burns instantly
+    dialogReply: Now we just have roasted fruit.
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Instantly Destroyed
+    dialogReply: It got obliterated on impact!

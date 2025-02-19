@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 30
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The wizard is sleep-deprived! He needs energy!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 4
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Cheese keeps him awake!
+  - item: 2
+    score: 8
+    scoreReply: Healthy option
+    dialogReply: Natural energy boost!
+  - item: 11
+    score: 5
+    scoreReply: Sugar rush
+    dialogReply: "He\u2019ll crash later though..."
+  - item: 9
+    score: 2
+    scoreReply: Terrible idea
+    dialogReply: WHY WOULD THIS HELP?!
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Drains Energy
+    dialogReply: This will just make him more tired!

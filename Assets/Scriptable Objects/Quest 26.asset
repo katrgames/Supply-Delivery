@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 26
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The blacksmith is out of anvil weights!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 13
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Steel on steel!
+  - item: 5
+    score: 8
+    scoreReply: Sort of works
+    dialogReply: "It\u2019s... heavy enough?"
+  - item: 3
+    score: 4
+    scoreReply: Bad idea
+    dialogReply: "That\u2019ll just break!"
+  - item: 6
+    score: 2
+    scoreReply: Horrible idea
+    dialogReply: It ran away screaming.
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Too Light
+    dialogReply: "This won\u2019t add any weight!"

@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 50
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The royal cat is angry! Find something to calm it down!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 6
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Distraction successful!
+  - item: 4
+    score: 8
+    scoreReply: Tasty bribe
+    dialogReply: It seems pleased!
+  - item: 2
+    score: 5
+    scoreReply: Decent
+    dialogReply: The cat sniffs it, then ignores it.
+  - item: 1
+    score: 2
+    scoreReply: Bad idea
+    dialogReply: It smacked it away!
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Made It Worse
+    dialogReply: The cat is now even angrier!

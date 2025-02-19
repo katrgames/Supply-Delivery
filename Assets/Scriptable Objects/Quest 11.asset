@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 11
   m_EditorClassIdentifier: 
   questDescription: The soldiers are exhausted! We need energy!
-  solutions: []
+  solutions:
+  - item: 2
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Fresh and full of energy!
+  - item: 4
+    score: 7
+    scoreReply: Decent snack
+    dialogReply: Good, but a bit heavy.
+  - item: 11
+    score: 5
+    scoreReply: Sugar rush
+    dialogReply: They'll run... for a while.
+  - item: 7
+    score: 2
+    scoreReply: Useless
+    dialogReply: "This won\u2019t fill anyone\u2019s stomach!"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Ineffective
+    dialogReply: "This won\u2019t keep them on their feet!"

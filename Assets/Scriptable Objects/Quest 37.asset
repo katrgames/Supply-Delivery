@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 37
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The enemy is using attack dogs! We need a distraction!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 6
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Chaos unleashed!
+  - item: 4
+    score: 8
+    scoreReply: Tasty bait
+    dialogReply: "At least they\u2019ll eat this!"
+  - item: 2
+    score: 5
+    scoreReply: Works, but meh
+    dialogReply: Dogs like snacks, right?
+  - item: 7
+    score: 2
+    scoreReply: No effect
+    dialogReply: "They don\u2019t care about magic!"
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Ignored
+    dialogReply: "The dogs don\u2019t even notice this!"

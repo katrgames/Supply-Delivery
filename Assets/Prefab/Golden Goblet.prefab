@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2294583093112511466}
   - component: {fileID: 5753221492865749873}
   m_Layer: 0
-  m_Name: MagicChicken
+  m_Name: Golden Goblet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795db1c539083c74a86e174699717740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
-  description: The Almighty Cluckinator
+  type: 5
+  description: Shiny Sippy Chalice
 --- !u!212 &5753221492865749873
 SpriteRenderer:
   m_ObjectHideFlags: 0

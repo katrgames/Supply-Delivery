@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fc0235508154b4db65c41b99297207, type: 3}
   m_Name: Quest 22
   m_EditorClassIdentifier: 
-  questDescription: 
+  questDescription: The knights need better foot protection!
   solutions:
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
-  - item: 0
-    score: 0
-    scoreReply: 
-    dialogReply: 
+  - item: 9
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: Sturdy and knightly!
+  - item: 12
+    score: 7
+    scoreReply: Uncomfortable
+    dialogReply: Bucket shoes? Odd but tough!
+  - item: 7
+    score: 4
+    scoreReply: Nope
+    dialogReply: "Magic won\u2019t help blisters!"
+  - item: 2
+    score: 2
+    scoreReply: WHY???
+    dialogReply: "Squishy footwear isn\u2019t great..."
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Ineffective
+    dialogReply: "This won\u2019t protect their feet!"

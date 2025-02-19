@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 12
   m_EditorClassIdentifier: 
   questDescription: The king demands something valuable as tribute!
-  solutions: []
+  solutions:
+  - item: 3
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: A royal offering indeed!
+  - item: 5
+    score: 8
+    scoreReply: Acceptable
+    dialogReply: Shiny enough for the king!
+  - item: 13
+    score: 5
+    scoreReply: Not quite right
+    dialogReply: Well, it's old and rare...
+  - item: 10
+    score: 2
+    scoreReply: WHY?
+    dialogReply: The king does NOT cook!
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Unworthy
+    dialogReply: This is not fit for a king!

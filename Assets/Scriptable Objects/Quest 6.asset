@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Quest 6
   m_EditorClassIdentifier: 
   questDescription: We need light! Something to channel fire!
-  solutions: []
+  solutions:
+  - item: 7
+    score: 10
+    scoreReply: Best Choice
+    dialogReply: This will glow for days!
+  - item: 8
+    score: 7
+    scoreReply: Might help
+    dialogReply: I think there's a fire spell here...
+  - item: 5
+    score: 4
+    scoreReply: Maybe a candle holder?
+    dialogReply: Uh... sure?
+  - item: 13
+    score: 2
+    scoreReply: WHY???
+    dialogReply: It reflects light, but that's it.
   badSolution:
-    scoreReply: 
-    dialogReply: 
+    scoreReply: Ineffective
+    dialogReply: "This won\u2019t help in the dark!"
