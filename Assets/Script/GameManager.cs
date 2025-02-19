@@ -1,17 +1,25 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Setup")]
     public Button playButton;
     public TMP_Text timeText;
     public TMP_Text scoreText;
     public float timeLimit = 120f;
+    public GameObject player;
+
+    [Header("Gameplay")]
+    public List<Quest> questsList = new List<Quest>();
+    public List<Items> itemsList = new List<Items>();
+
+    // Private Var
     private float currentTime;
     private int gameScore;
     private bool isGameActive;
-    public GameObject player;
 
     void Start()
     {
@@ -38,12 +46,12 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
+
     void StartGame()
     {
         isGameActive = true;
         playButton.interactable = false;
         playButton.gameObject.SetActive(false);
-
     }
 
     void EndGame()
@@ -53,6 +61,12 @@ public class GameManager : MonoBehaviour
         playButton.gameObject.SetActive(true);
         Destroy(player);
     }
+
+    public void RollQuest() { }
+
+    public void CheckAvailableSolution() { }
+
+    public void SpawnSolution() { }
 
     public void AddScore(int score)
     {
