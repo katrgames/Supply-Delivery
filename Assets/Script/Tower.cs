@@ -10,8 +10,13 @@ public class Tower : MonoBehaviour
     public TMP_Text questDescriptionText;
     public bool IsActiveToQuest { get; set; } = true;
 
+    public TMP_Text scoreReplyText;
+    public TMP_Text dialogText;
     private void Start()
     {
+        questDescriptionText.text = null;
+        scoreReplyText.text = null;
+        dialogText.text = null;
         IsActiveToQuest = true;
     }
 
@@ -50,19 +55,21 @@ public class Tower : MonoBehaviour
         {
             Items item = collision.gameObject.GetComponent<Items>();
 
-             if (item != null)
+            if (item != null)
                  {
                     int score = GetScoreForItem(item);
 
                     GameManager.instance.AddScore(score);
                     Debug.Log("Delivered item: " + item.type + " → Score: " + score);
 
-                   // Remove delivered item
-                   Destroy(item.gameObject);
+                GameManager.instance.RemoveSpawnedItem(item);
+                // Remove delivered item
+                //Destroy(item.gameObject);
 
                    // Clear quest
                    CurrentQuest = null;
-                IsActiveToQuest = true;
+                   IsActiveToQuest = true;
+                questDescriptionText.text = null;
                  }
  
         }
@@ -76,12 +83,17 @@ public class Tower : MonoBehaviour
             {
                 if (solution.item == itemType)
                 {
+                dialogText.text = solution.scoreReply;
+                scoreReplyText.text = solution.dialogReply;
                     Debug.Log("Correct item! Reply: " + solution.scoreReply);
                     return solution.score; // Return the score from the solution
                 }
             }
         // If no match, use the bad solution response
         Debug.Log("Wrong item! Reply: " + CurrentQuest.badSolution.scoreReply);
+        dialogText.text = CurrentQuest.badSolution.scoreReply;
+        scoreReplyText.text = CurrentQuest.badSolution.dialogReply;
         return 1; // Default bad solution score (adjust if needed)
     }
+
 }

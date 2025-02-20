@@ -5,9 +5,10 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
-    public Transform carryPosition; // A child object where the item will be carried
-    private GameObject carriedItem; // The item the player is carrying
-
+    
+    [Header("Item Interaction")]
+    private Items heldItem;
+    public Transform holdPoint; // Position where the item will be held
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,52 +19,58 @@ public class PlayerMovement : MonoBehaviour
         // Get input from WASD keys
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        // Drop item with Space key
-        if (Input.GetKeyDown(KeyCode.Space) && carriedItem != null)
+        movement = movement.normalized;
+        // Handle grabbing and dropping items
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            DropItem();
+            if (heldItem == null)
+            {
+                GrabItem();
+            }
+            else
+            {
+                DropItem();
+            }
         }
     }
 
     void FixedUpdate()
     {
-        // Move the player
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        moveInput = moveInput.normalized;
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, movement * moveSpeed, 0.1f);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void GrabItem()
     {
-        if (collision.CompareTag("Item") && carriedItem == null)
+        if (heldItem == null)
         {
-            PickUpItem(collision.gameObject);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f); // Detect nearby items
+            foreach (Collider2D col in colliders)
+            {
+                if (col.CompareTag("Item"))
+                {
+                    heldItem = col.GetComponent<Items>();
+                    if (heldItem != null)
+                    {
+                        heldItem.transform.SetParent(holdPoint);
+                        heldItem.transform.localPosition = Vector3.zero;
+                        heldItem.GetComponent<Rigidbody2D>().simulated = false; // Disable physics
+                        Debug.Log("Picked up: " + heldItem.name);
+                        return;
+                    }
+                }
+            }
         }
     }
 
-    private void PickUpItem(GameObject item)
+    private void DropItem()
     {
-        carriedItem = item;
-        item.transform.SetParent(carryPosition);
-        item.transform.localPosition = Vector3.zero;
-
-        // Change physics properties
-        Rigidbody2D itemRb = item.GetComponent<Rigidbody2D>();
-        itemRb.bodyType = RigidbodyType2D.Kinematic; // Disable physics movement
-        itemRb.linearVelocity = Vector2.zero; // Stop any existing movement
-    }
-
-    public void DropItem()
-    {
-        if (carriedItem != null)
+        if (heldItem != null)
         {
-            Rigidbody2D itemRb = carriedItem.GetComponent<Rigidbody2D>();
-            itemRb.bodyType = RigidbodyType2D.Dynamic; // Reactivate physics
-
-            carriedItem.transform.SetParent(null);
-            carriedItem = null;
+            heldItem.transform.SetParent(null);
+            heldItem.GetComponent<Rigidbody2D>().simulated = true; // Enable physics
+            heldItem = null;
+            Debug.Log("Dropped item");
         }
-    }
-
-    public GameObject GetCarriedItem()
-    {
-        return carriedItem;
     }
 }
