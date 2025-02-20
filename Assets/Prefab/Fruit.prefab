@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5688458540685094518}
   - component: {fileID: 2294583093112511466}
   - component: {fileID: 5753221492865749873}
-  - component: {fileID: 1608978511123018494}
-  - component: {fileID: 2180364659167622121}
+  - component: {fileID: -7594850040397954754}
+  - component: {fileID: -1470119424447478688}
   m_Layer: 0
-  m_Name: MagicChicken
+  m_Name: Fruit
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795db1c539083c74a86e174699717740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
-  description: The Almighty Cluckinator
+  type: 2
+  description: Vitamin Sphere
 --- !u!212 &5753221492865749873
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -214614010685069902, guid: 912d76fd55062ed4fabf71914771b5d6, type: 3}
+  m_Sprite: {fileID: -4099623941756452201, guid: 912d76fd55062ed4fabf71914771b5d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1608978511123018494
+--- !u!58 &-7594850040397954754
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
---- !u!50 &2180364659167622121
+--- !u!50 &-1470119424447478688
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
