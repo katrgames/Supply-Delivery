@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -17,14 +19,13 @@ public class GameManager : MonoBehaviour
     public float towerQuestRequestTime = 7f;
     public Transform spawnPoint;
     public GameObject endGamePanel;
-    public TMP_Text endGameScoreText; 
+    public TMP_Text endGameScoreText;
 
 
     [Header("Gameplay")]
     public List<Quest> questsList = new List<Quest>();
     public List<Items> itemsList = new List<Items>();
     public Tower[] towers;
-
 
 
 
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
         titleText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
+        endGamePanel.SetActive(false);
     }
 
     public void RollQuest()
@@ -164,7 +166,7 @@ public class GameManager : MonoBehaviour
         // Collect all active towers
         foreach (var tower in towers)
         {
-            if (tower.IsActiveToQuest)
+            if (tower.IsActiveToQuest) //&& !previousQuest.Contains(tower.CurrentQuest))
             {
                 availableTowers.Add(tower);
             }
@@ -175,8 +177,20 @@ public class GameManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, availableTowers.Count);
             availableTowers[randomIndex].AcceptQuest(assignQuest);
+            //Tower selectedTower = availableTowers[Random.Range(0, availableTowers.Count)];
+            //selectedTower.AcceptQuest(assignQuest);
         }
     }
+    //public void QuestFulfilled(Quest fulfilledQuest)
+    //{
+    //    previousQuest.Add(fulfilledQuest);
+
+    //    // If more than 1 other quests have been assigned, remove the oldest one
+    //    if (previousQuest.Count > 2)
+    //    {
+    //        previousQuest.RemoveAt(0); // Allows the tower to take a quest again
+    //    }
+    //}
 
     public bool CheckAvailableItems(Items selectedItem) 
     {
@@ -220,11 +234,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnItemInWorld(Items spawnItem)
-    {
-        GameObject newItem = Instantiate(spawnItem.gameObject, spawnPoint.position, Quaternion.identity);
-        spawnedItems.Add(newItem.GetComponent<Items>());
-    }
     public void RemoveSpawnedItem(Items itemInstance)
     {
         foreach (var item in spawnedItems)
@@ -262,7 +271,7 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         isGameActive = false;
-        ToggleGameMenu(true);
+        ToggleGameMenu(false);
         Destroy(player);
         if (player != null)
         {
@@ -270,16 +279,19 @@ public class GameManager : MonoBehaviour
         }
         foreach (Tower tower in towers)
         {
-            tower.dialogText.text = "";
             tower.scoreReplyText.text = "";
         }
         //show end game score
         endGamePanel.SetActive(true);
         endGameScoreText.text = "Final Score: " + gameScore;
         
-        titleText.gameObject.SetActive(true);
+        titleText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
 
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

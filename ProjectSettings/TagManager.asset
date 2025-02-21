@@ -5,15 +5,16 @@ TagManager:
   serializedVersion: 3
   tags:
   - Item
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
-  - 
-  - 
+  - Item
+  - Player
   - 
   - 
   - 
