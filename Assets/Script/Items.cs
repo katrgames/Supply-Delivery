@@ -1,108 +1,116 @@
-using UnityEngine;
 using System.Collections;
-using UnityEngine.UIElements;
-
+using TMPro;
+using UnityEngine;
 
 public class Items : MonoBehaviour
 {
     public ItemsType type;
     public string description;
-    private Rigidbody2D rb;
-    private Collider2D col;
-    private bool isFollowing = false;
-    private Transform followTarget;
+    public GameObject shadow;
 
     [Header("Move Animation Settings")]
-    public float moveAwayDistance = 1f; // Distance to move away
-    public float moveAwayTime = 0.5f; // Time to move away
-    public EasingFunction.Ease moveEase = EasingFunction.Ease.EaseOutQuad; // Easing for movement
+    public float grabAnimSpeed = 0.2f; // Time to move away
+    public EasingFunction.Ease grabAnimEase = EasingFunction.Ease.EaseOutQuad; // Easing for movement
 
     [Header("Scale Animation Settings")]
-    public float scaleIncrease = 1.5f; // Scale size increase
-    public float scaleTime = 0.5f; // Time to scale up
-    public float shrinkTime = 1f; // Time to shrink back
-    public EasingFunction.Ease scaleEase = EasingFunction.Ease.EaseOutBounce; // Easing for scaling
+    public float spawnScale = 1.5f; // Scale size increase
+    public float spawnDuration = 0.5f; // Time to scale up
 
-    private Vector3 initialPosition;
-    private Vector3 moveAwayTarget; // The random movement direction
-    private Vector3 originalScale;
+    public float spawnDistance = 0.5f; // How far it moves while spawning
+    public EasingFunction.Ease spawnEase = EasingFunction.Ease.EaseOutBack; // Easing for scaling
+    public EasingFunction.Ease moveEaseType = EasingFunction.Ease.EaseOutQuad; // Easing for movement
+    private Vector3 startPosition;
+    private Vector3 targetPosition;
+
+    private Rigidbody2D rb;
+    private Collider2D col;
+    private Transform followTarget;
+
+    private Vector2 originalScale;
+    public bool isSpawning = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
     }
-    private void Start()
+
+    private void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>(); // Get Rigidbody2D component
-        initialPosition = transform.position;
+        startPosition = transform.position;
+        targetPosition = startPosition + GetRandomDirection() * spawnDistance;
         originalScale = transform.localScale;
-        // Generate a random direction
-        Vector2 randomDirection = Random.insideUnitCircle.normalized; // Random direction in 2D space
-        Vector3 moveAwayTarget = transform.position + (Vector3)randomDirection;
-
-        PlayFullSpawnAnimation(); // Play full animation when spawned
+        transform.localScale = Vector3.zero; // Start from zero size
+        StartCoroutine(SpawnWithBounce());
     }
 
-    private void Update()
+    Vector3 GetRandomDirection()
     {
-        
+        float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        return new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0).normalized;
     }
 
-    public void PlayFullSpawnAnimation()
+    IEnumerator SpawnWithBounce()
     {
-        StopAllCoroutines(); // Stop any existing animation
-        initialPosition = transform.position;
+        isSpawning = true;
+        float elapsedTime = 0f;
+        var easingFunction = EasingFunction.GetEasingFunction(spawnEase);
+        var moveEasing = EasingFunction.GetEasingFunction(moveEaseType);
 
-        // Generate a new random direction
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        moveAwayTarget = initialPosition + new Vector3(randomDirection.x, randomDirection.y, 0) * moveAwayDistance;
+        while (elapsedTime < spawnDuration)
+        {
+            float t = elapsedTime / spawnDuration;
+            float easedT = easingFunction(0f, 1f, t); // Get eased interpolation value
+            float moveT = moveEasing(0f, 1f, t); // Movement easing
 
-        StartCoroutine(SpawnAnimation(transform.position, moveAwayTarget, 1f, transform.localScale, 1.2f, 0.3f, 0.5f, EasingFunction.Ease.EaseOutQuad, EasingFunction.Ease.EaseOutBounce));
+            // Apply scale with bounce effect
+            float scaleMultiplier = Mathf.Lerp(0f, spawnScale, easedT);
+            transform.localScale = originalScale * scaleMultiplier;
+
+            // Move in a random direction with easing
+            transform.position = Vector3.Lerp(startPosition, targetPosition, moveT);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the scale is set correctly at the end
+        transform.localScale = originalScale;
+        isSpawning = false;
     }
 
-    //public void PlayScaleAnimation()
-    //{
-    //    StopAllCoroutines(); // Stop any existing animation
-    //    StartCoroutine(ScaleOnlyAnimation(transform.localScale, 1.2f, 0.3f, 0.5f, EasingFunction.Ease.EaseOutQuad, EasingFunction.Ease.EaseOutBounce));
-    //}
-    private IEnumerator SpawnAnimation(Vector3 startLocation, Vector3 endLocation, float moveTime, Vector3 startScale, float targetScale, float scaleT, float shrinkT, EasingFunction.Ease startEase, EasingFunction.Ease endEase)
-    {
-        // Step 1: Move away from spawn point in a random direction
-        yield return MoveAnimation(startLocation, endLocation, moveTime, startEase);
-
-        // Step 2: Scale up and bounce back to normal
-        Vector3 targetIncrease = startScale * targetScale;
-        yield return ScaleAnimation(startScale, targetIncrease, scaleT, startEase);
-        yield return ScaleAnimation(targetIncrease, startScale, shrinkT, endEase);
-    }
-    public IEnumerator ScaleOnlyAnimation(Vector3 startScale, float targetScale, float scaleT, float shrinkT, EasingFunction.Ease startEase, EasingFunction.Ease endEase)
-    {
-        Vector3 targetIncrease = startScale * targetScale;
-        yield return ScaleAnimation(startScale, targetIncrease, scaleT, startEase);
-        yield return ScaleAnimation(targetIncrease, startScale, shrinkT, endEase);
-    }
     public void GrabItem(Transform holdPoint)
     {
         StopAllCoroutines(); // Stop any running animations
         followTarget = holdPoint;
-        isFollowing = true;
+        GameManager.instance.ChangeItemDescText(description);
 
         rb.simulated = false;
         col.enabled = false;
         // Move to hold position first
-        StartCoroutine(MoveAnimation(transform.position, holdPoint.position, 0.2f, EasingFunction.Ease.EaseOutQuad));
-
+        StartCoroutine(
+            MoveAnimation(
+                transform.position,
+                holdPoint.position,
+                grabAnimSpeed,
+                EasingFunction.Ease.EaseOutQuad
+            )
+        );
+        shadow.SetActive(false);
         // Start following coroutine
         StartCoroutine(FollowHoldPoint());
     }
 
     private IEnumerator FollowHoldPoint()
     {
-        while (isFollowing && followTarget != null)
+        while (followTarget != null)
         {
             // Smoothly follow holdPoint
-            transform.position = Vector3.Lerp(transform.position, followTarget.position, Time.deltaTime * 15f);
+            transform.position = Vector3.Lerp(
+                transform.position,
+                followTarget.position,
+                Time.deltaTime * 30f
+            );
             yield return null; // Wait for the next frame
         }
     }
@@ -110,14 +118,20 @@ public class Items : MonoBehaviour
     public void DropItem(Vector3 dropPoint)
     {
         StopAllCoroutines(); // Stop following when dropped
-        isFollowing = false;
+        GameManager.instance.ChangeItemDescText("");
         followTarget = null;
         rb.simulated = true;
         col.enabled = true;
-        StartCoroutine(SpawnAnimation(transform.position, dropPoint, 1f,transform.localScale, 1.2f, 0.4f, 0.2f,EasingFunction.Ease.EaseOutQuad, EasingFunction.Ease.EaseOutBounce));
+        shadow.SetActive(true);
+        StartCoroutine(MoveAnimation(transform.position, dropPoint, grabAnimSpeed, grabAnimEase));
     }
 
-    private IEnumerator MoveAnimation(Vector3 start, Vector3 end, float duration, EasingFunction.Ease easeType)
+    private IEnumerator MoveAnimation(
+        Vector3 start,
+        Vector3 end,
+        float duration,
+        EasingFunction.Ease easeType
+    )
     {
         float elapsedTime = 0f;
         var easingFunction = EasingFunction.GetEasingFunction(easeType);
@@ -125,40 +139,18 @@ public class Items : MonoBehaviour
         while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
-            Vector3 newPosition = new Vector3(
+            Vector2 newPosition = new Vector2(
                 easingFunction(start.x, end.x, t),
                 easingFunction(start.y, end.y, t)
-                //easingFunction(start.z, end.z, t)
             );
 
             rb.MovePosition(newPosition); // Move using Rigidbody2D for physics-friendly movement
 
             elapsedTime += Time.deltaTime;
             yield return null;
+            Debug.Log("Move to: " + newPosition);
         }
 
         rb.MovePosition(end); // Ensure exact final position
     }
-    private IEnumerator ScaleAnimation(Vector3 start, Vector3 end, float duration, EasingFunction.Ease easeType)
-    {
-        float elapsedTime = 0f;
-        var easingFunction = EasingFunction.GetEasingFunction(easeType);
-
-        while (elapsedTime < duration)
-        {
-            float t = elapsedTime / duration;
-            transform.localScale = new Vector3(
-                easingFunction(start.x, end.x, t),
-                easingFunction(start.y, end.y, t),
-                easingFunction(start.z, end.z, t)
-            );
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.localScale = end; // Ensure final scale is exact
-    }
 }
-
-

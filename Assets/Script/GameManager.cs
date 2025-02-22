@@ -9,11 +9,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     [Header("Setup")]
     public Button playButton;
-    public TMP_Text titleText;
+    public GameObject titleText;
     public TMP_Text timeText;
     public TMP_Text scoreText;
+    public TMP_Text itemDescText;
     public float timeLimit = 120f;
     public GameObject player;
     public float towerQuestRequestTime = 7f;
@@ -21,20 +23,18 @@ public class GameManager : MonoBehaviour
     public GameObject endGamePanel;
     public TMP_Text endGameScoreText;
 
-
     [Header("Gameplay")]
     public List<Quest> questsList = new List<Quest>();
     public List<Items> itemsList = new List<Items>();
     public Tower[] towers;
-
-
+    public Color minColor = Color.red; // Score = 1
+    public Color maxColor = Color.green; // Score = 10
 
     // Private Var
     private float towerAcceptQuestTimer;
     private float currentTime;
     private int gameScore;
     private bool isGameActive;
-
 
     private List<Quest> previousQuest = new();
     private List<Items> spawnedItems = new();
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
     }
+
     private void Start()
     {
         currentTime = timeLimit;
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             player.SetActive(false);
-            titleText.gameObject.SetActive(true);
+            titleText.SetActive(true);
             timeText.gameObject.SetActive(false);
             scoreText.gameObject.SetActive(false);
         }
@@ -85,7 +86,8 @@ public class GameManager : MonoBehaviour
         {
             towerAcceptQuestTimer = towerQuestRequestTime;
             RollQuest();
-        } else
+        }
+        else
         {
             towerAcceptQuestTimer -= Time.deltaTime;
         }
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour
         RollQuest();
         if (player != null)
         {
-            player.SetActive(true); 
+            player.SetActive(true);
         }
         titleText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(true);
@@ -114,19 +116,15 @@ public class GameManager : MonoBehaviour
 
     public void RollQuest()
     {
-
-        Quest pickedQuest = null;
+        Quest pickedQuest;
 
         do
         {
             int questIndex = Random.Range(0, questsList.Count);
             pickedQuest = questsList[questIndex];
-        }
-
-        while (!CheckQuest(pickedQuest));
+        } while (!CheckQuest(pickedQuest));
 
         SetTowerQuest(pickedQuest);
-
     }
 
     private bool CheckQuest(Quest takenQuest)
@@ -136,7 +134,7 @@ public class GameManager : MonoBehaviour
             return true;
         }
 
-        for(int i = 0; i < previousQuest.Count; i++)
+        for (int i = 0; i < previousQuest.Count; i++)
         {
             if (takenQuest == previousQuest[i])
             {
@@ -155,11 +153,11 @@ public class GameManager : MonoBehaviour
     {
         //for (int i =0; i < towers.Length; i++)
         //{
-            //if (towers[i].IsActiveToQuest)
-            //{
-              //  towers[i].AcceptQuest(assignQuest);
-                //break;
-          //  }
+        //if (towers[i].IsActiveToQuest)
+        //{
+        //  towers[i].AcceptQuest(assignQuest);
+        //break;
+        //  }
         //}
         List<Tower> availableTowers = new List<Tower>();
 
@@ -181,6 +179,7 @@ public class GameManager : MonoBehaviour
             //selectedTower.AcceptQuest(assignQuest);
         }
     }
+
     //public void QuestFulfilled(Quest fulfilledQuest)
     //{
     //    previousQuest.Add(fulfilledQuest);
@@ -192,9 +191,10 @@ public class GameManager : MonoBehaviour
     //    }
     //}
 
-    public bool CheckAvailableItems(Items selectedItem) 
+    public bool CheckAvailableItems(Items selectedItem)
     {
-        if (spawnedItems.Count == 0) return true;
+        if (spawnedItems.Count == 0)
+            return true;
 
         foreach (var item in spawnedItems)
         {
@@ -206,6 +206,13 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    public void ChangeItemDescText(string descText)
+    {
+        if (itemDescText == null)
+            return;
+        itemDescText.text = descText;
+    }
+
     public void SpawnSolution(Items spawnItem)
     {
         /*if (CheckAvailableItems(spawnItem))
@@ -213,10 +220,13 @@ public class GameManager : MonoBehaviour
             spawnedItems.Add(spawnItem);
             SpawnItemInWorld(spawnItem);
         }*/
-        if (!CheckAvailableItems(spawnItem)) return; // Prevent multiple active instances
+        if (!CheckAvailableItems(spawnItem))
+            return; // Prevent multiple active instances
 
         // Try to find an inactive item of the same type
-        Items existingItem = spawnedItems.Find(item => item.type == spawnItem.type && !item.gameObject.activeInHierarchy);
+        Items existingItem = spawnedItems.Find(item =>
+            item.type == spawnItem.type && !item.gameObject.activeInHierarchy
+        );
 
         if (existingItem != null)
         {
@@ -247,9 +257,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-
     public void AddScore(int score)
     {
         gameScore += score;
@@ -268,6 +275,7 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = "Score: " + gameScore;
     }
+
     private void EndGame()
     {
         isGameActive = false;
@@ -275,7 +283,7 @@ public class GameManager : MonoBehaviour
         Destroy(player);
         if (player != null)
         {
-            player.SetActive(false); 
+            player.SetActive(false);
         }
         foreach (Tower tower in towers)
         {
@@ -284,12 +292,12 @@ public class GameManager : MonoBehaviour
         //show end game score
         endGamePanel.SetActive(true);
         endGameScoreText.text = "Final Score: " + gameScore;
-        
+
         titleText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
-
     }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

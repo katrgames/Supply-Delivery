@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 1d7ba9ed51b471747acc70a85aa880c1
+guid: 85f01f453e82001448fd1aa46c3c4fe4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 158571636818912160
-    second: TitleBox_64x16_0
+      213: -3196817299492936364
+    second: Porter-IdleCarry_0
+  - first:
+      213: -6415313913608523523
+    second: Porter-IdleCarry_1
+  - first:
+      213: -7443723735708176043
+    second: Porter-IdleCarry_2
+  - first:
+      213: 8569999205188342849
+    second: Porter-IdleCarry_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +55,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
-  spriteBorder: {x: 6, y: 6, z: 6, w: 6}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -96,29 +105,16 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TitleBox_64x16_0
+      name: Porter-IdleCarry_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -128,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0a32b04401c533200800000000000000
-      internalID: 158571636818912160
+      spriteID: 45566e38a9f92a3d0800000000000000
+      internalID: -3196817299492936364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Porter-IdleCarry_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df03eb04cf938f6a0800000000000000
+      internalID: -6415313913608523523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Porter-IdleCarry_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55178fe63b492b890800000000000000
+      internalID: -7443723735708176043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Porter-IdleCarry_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14491ae0fd0cee670800000000000000
+      internalID: 8569999205188342849
       vertices: []
       indices: 
       edges: []
@@ -138,8 +200,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 8b35be323d4ecdb4ab59cef7fc858a47
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TitleBox_64x16_0: 158571636818912160
+      Porter-IdleCarry_0: -3196817299492936364
+      Porter-IdleCarry_1: -6415313913608523523
+      Porter-IdleCarry_2: -7443723735708176043
+      Porter-IdleCarry_3: 8569999205188342849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
