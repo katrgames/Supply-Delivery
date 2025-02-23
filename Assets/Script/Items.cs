@@ -38,7 +38,8 @@ public class Items : MonoBehaviour
     private void OnEnable()
     {
         startPosition = transform.position;
-        targetPosition = startPosition + GetRandomDirection() * spawnDistance;
+        float randomSpawnDistance = Random.Range(-spawnDistance, spawnDistance);
+        targetPosition = startPosition + GetRandomDirection() * randomSpawnDistance;
         originalScale = transform.localScale;
         transform.localScale = Vector3.zero; // Start from zero size
         StartCoroutine(SpawnWithBounce());

@@ -12,16 +12,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Setup")]
     public Button playButton;
-    public GameObject titleText;
+    public GameObject titlePanel;
+    public GameObject gamePanel;
+    public GameObject scorePanel;
+    public TMP_Text scoreReplyText;
+    public TMP_Text endGameScoreText;
+    public GameObject settingPanel;
     public TMP_Text timeText;
     public TMP_Text scoreText;
     public TMP_Text itemDescText;
     public float timeLimit = 120f;
     public GameObject player;
-    public float towerQuestRequestTime = 7f;
+    public float towerQuestRequestTime = 5f;
     public Transform spawnPoint;
-    public GameObject endGamePanel;
-    public TMP_Text endGameScoreText;
 
     [Header("Gameplay")]
     public List<Quest> questsList = new List<Quest>();
@@ -31,13 +34,14 @@ public class GameManager : MonoBehaviour
     public Color maxColor = Color.green; // Score = 10
 
     // Private Var
-    private float towerAcceptQuestTimer;
+    public float TowerAcceptQuestTimer { get; set; }
     private float currentTime;
     private int gameScore;
     private bool isGameActive;
 
     private List<Quest> previousQuest = new();
     private List<Items> spawnedItems = new();
+    private Coroutine scoreReply;
 
     private void Awake()
     {
@@ -49,21 +53,17 @@ public class GameManager : MonoBehaviour
         currentTime = timeLimit;
         gameScore = 0;
         isGameActive = false;
-        player = null;
-        towerAcceptQuestTimer = towerQuestRequestTime;
+        scoreReplyText.text = "";
 
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-        if (player != null)
-        {
-            player.SetActive(false);
-            titleText.SetActive(true);
-            timeText.gameObject.SetActive(false);
-            scoreText.gameObject.SetActive(false);
-        }
-        endGamePanel.SetActive(false);
+        TowerAcceptQuestTimer = towerQuestRequestTime;
+
+        player.SetActive(false);
+
+        ToggleTitleMenu(true);
+
+        ToggleGameMenu(false);
+        ToggleSettingMenu(false);
+        ToggleScoreMenu(false);
     }
 
     private void Update()
@@ -82,21 +82,35 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
 
-        if (towerAcceptQuestTimer <= 0)
+        if (TowerAcceptQuestTimer <= 0)
         {
-            towerAcceptQuestTimer = towerQuestRequestTime;
+            TowerAcceptQuestTimer = towerQuestRequestTime;
             RollQuest();
         }
         else
         {
-            towerAcceptQuestTimer -= Time.deltaTime;
+            TowerAcceptQuestTimer -= Time.deltaTime;
         }
+    }
+
+    private void ToggleTitleMenu(bool setMenu)
+    {
+        titlePanel.SetActive(setMenu);
+    }
+
+    private void ToggleSettingMenu(bool setMenu)
+    {
+        settingPanel.SetActive(setMenu);
+    }
+
+    private void ToggleScoreMenu(bool setMenu)
+    {
+        scorePanel.SetActive(setMenu);
     }
 
     private void ToggleGameMenu(bool setMenu)
     {
-        playButton.interactable = setMenu;
-        playButton.gameObject.SetActive(setMenu);
+        gamePanel.SetActive(setMenu);
     }
 
     public void StartGame()
@@ -104,14 +118,12 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         ToggleGameMenu(false);
         RollQuest();
-        if (player != null)
-        {
-            player.SetActive(true);
-        }
-        titleText.gameObject.SetActive(false);
-        timeText.gameObject.SetActive(true);
-        scoreText.gameObject.SetActive(true);
-        endGamePanel.SetActive(false);
+
+        player.SetActive(true);
+
+        ToggleTitleMenu(false);
+
+        ToggleGameMenu(true);
     }
 
     public void RollQuest()
@@ -208,9 +220,25 @@ public class GameManager : MonoBehaviour
 
     public void ChangeItemDescText(string descText)
     {
-        if (itemDescText == null)
-            return;
         itemDescText.text = descText;
+    }
+
+    public void SetScoreReplyText(string replyText, int score)
+    {
+        if (scoreReply != null)
+        {
+            StopCoroutine(scoreReply);
+        }
+        scoreReply = StartCoroutine(ChangeScoreReplyText(replyText, score));
+    }
+
+    public IEnumerator ChangeScoreReplyText(string replyText, int score)
+    {
+        float normalizedScore = (score - 1) / 9f;
+        scoreReplyText.color = Color.Lerp(minColor, maxColor, normalizedScore);
+        scoreReplyText.text = replyText + " +" + score.ToString();
+        yield return new WaitForSeconds(2f);
+        scoreReplyText.text = "";
     }
 
     public void SpawnSolution(Items spawnItem)
@@ -244,16 +272,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RemoveSpawnedItem(Items itemInstance)
+    public void RemovePreviousItems(Items item)
     {
-        foreach (var item in spawnedItems)
+        if (spawnedItems.Contains(item))
         {
-            if (item == itemInstance)
-            {
-                item.gameObject.SetActive(false); // Disable instead of removing
-                Debug.Log("Deactivated item: " + itemInstance.type);
-                return;
-            }
+            spawnedItems.Remove(item);
         }
     }
 
@@ -285,17 +308,10 @@ public class GameManager : MonoBehaviour
         {
             player.SetActive(false);
         }
-        foreach (Tower tower in towers)
-        {
-            tower.scoreReplyText.text = "";
-        }
+        scoreReplyText.text = "Time's up!";
         //show end game score
-        endGamePanel.SetActive(true);
+        ToggleScoreMenu(true);
         endGameScoreText.text = "Final Score: " + gameScore;
-
-        titleText.gameObject.SetActive(false);
-        timeText.gameObject.SetActive(false);
-        scoreText.gameObject.SetActive(false);
     }
 
     public void RestartGame()

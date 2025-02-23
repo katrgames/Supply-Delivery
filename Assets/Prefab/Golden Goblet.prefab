@@ -55,9 +55,9 @@ MonoBehaviour:
   grabAnimEase: 1
   spawnScale: 1.5
   spawnDuration: 1
-  spawnDistance: 1
-  spawnEase: 25
-  moveEaseType: 2
+  spawnDistance: 2
+  spawnEase: 29
+  moveEaseType: 6
   isSpawning: 0
 --- !u!212 &5753221492865749873
 SpriteRenderer:

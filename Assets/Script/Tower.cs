@@ -12,11 +12,8 @@ public class Tower : MonoBehaviour
 
     public bool IsActiveToQuest { get; set; } = true;
 
-    public TMP_Text scoreReplyText;
-
     private void Start()
     {
-        scoreReplyText.text = null;
         IsActiveToQuest = true;
         StartCoroutine(HideQuestDescription(0f));
     }
@@ -28,12 +25,6 @@ public class Tower : MonoBehaviour
         IsActiveToQuest = false;
 
         StartCoroutine(SpawnSolutions(acceptedQuest));
-    }
-
-    private IEnumerator DelaySetActive()
-    {
-        yield return new WaitForSeconds(7f); // Wait for 3 seconds
-        IsActiveToQuest = true; // Now set it to true
     }
 
     private IEnumerator SpawnSolutions(Quest acceptedQuest)
@@ -65,6 +56,11 @@ public class Tower : MonoBehaviour
         yield return new WaitForSeconds(delay);
         questDescText.text = ""; // Clear text after 2.5 seconds
         questDescPanel.SetActive(false);
+        IsActiveToQuest = true; // Now set it to true
+        GameManager.instance.TowerAcceptQuestTimer =
+            GameManager.instance.TowerAcceptQuestTimer > 5
+                ? 5
+                : GameManager.instance.TowerAcceptQuestTimer;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -84,14 +80,8 @@ public class Tower : MonoBehaviour
                 // Start coroutine to hide text after seconds
                 StartCoroutine(HideQuestDescription(2f));
 
-                GameManager.instance.RemoveSpawnedItem(item);
-                // Remove delivered item
-                //Destroy(item.gameObject);
-
-                //CurrentQuest = null;
-                StartCoroutine(DelaySetActive());
-                //IsActiveToQuest = true;
-                //questDescriptionText.text = null;
+                Destroy(item.gameObject);
+                GameManager.instance.RemovePreviousItems(item);
             }
         }
     }
@@ -105,7 +95,7 @@ public class Tower : MonoBehaviour
             if (solution.item == itemType)
             {
                 questDescText.text = solution.dialogReply;
-                scoreReplyText.text = solution.scoreReply + " +" + solution.score.ToString();
+                GameManager.instance.SetScoreReplyText(solution.scoreReply, solution.score);
                 Debug.Log("Correct item! Reply: " + solution.scoreReply);
                 return solution.score; // Return the score from the solution
             }
@@ -113,7 +103,8 @@ public class Tower : MonoBehaviour
         // If no match, use the bad solution response
         Debug.Log("Wrong item! Reply: " + CurrentQuest.badSolution.scoreReply);
         questDescText.text = CurrentQuest.badSolution.dialogReply;
-        scoreReplyText.text = CurrentQuest.badSolution.scoreReply;
+
+        GameManager.instance.SetScoreReplyText(CurrentQuest.badSolution.scoreReply, 1);
         return 1; // Default bad solution score (adjust if needed)
     }
 }
